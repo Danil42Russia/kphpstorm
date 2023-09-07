@@ -62,6 +62,9 @@ jobs:
 
   # Run tests
   test:
+    name: Test (${{ matrix.os }})
+    needs: [ build ]
+    runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
@@ -69,9 +72,6 @@ jobs:
           - windows-latest
           - ubuntu-latest
           - macos-latest
-
-    name: Test (${{ matrix.os }})
-    runs-on: ${{ matrix.os }}
     steps:
 
       # Check out current repository
